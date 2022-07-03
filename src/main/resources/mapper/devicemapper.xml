@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inxtes.nowsyncserver.mapper.DeviceMapper">
+    <select id="insertDevice" parameterType="com.inxtes.nowsyncserver.model.Device">
+        insert into t_device(uuid, lastUpdate, isOnline)
+        values (#{uuid}, #{lastUpdate}, #{isOnline})
+    </select>
+    <select id="selectDeviceByUUID" parameterType="String" resultType="com.inxtes.nowsyncserver.model.Device">
+        select *
+        from t_device
+        where uuid = #{uuid}
+    </select>
+    <select id="selectOnlineStatus" parameterType="String" resultType="Boolean">
+        select isOnline
+        from t_device
+        where uuid = #{uuid}
+    </select>
+
+    <update id="upDateLastUpdateTime" parameterType="Date">
+        update t_device
+        set lastUpdate = #{date}
+        where uuid = #{uuid}
+    </update>
+    <update id="upDateOnlineStatus">
+        update t_device
+        set isOnline = #{isOnline}
+        where uuid = #{uuid}
+    </update>
+</mapper>

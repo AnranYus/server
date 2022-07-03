@@ -7,5 +7,6 @@ import java.util.List;
 public interface MessageService {
     List<Message> getAllMsg();
 
-    List<Message> insertMsg(List<Message> list);
+    List<Message> setMsg(List<Message> list);
+
 }
