@@ -61,6 +61,10 @@ public class SessionPool {
         }
     }
 
+    public static void setLastUpdateTime(String uuid, Date date) {
+        deviceService.setUpdateTime(date, uuid);
+    }
+
     public static void notifyAllUpDate(String uuid) {
         for (String key : SessionPool.POOL.keySet()) {
             if (!Objects.equals(key, uuid)) {

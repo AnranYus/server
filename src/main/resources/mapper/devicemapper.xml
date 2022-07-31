@@ -18,7 +18,7 @@
         where uuid = #{uuid}
     </select>
 
-    <update id="upDateLastUpdateTime" parameterType="Date">
+    <update id="upDateLastUpdateTime">
         update t_device
         set lastUpdate = #{date}
         where uuid = #{uuid}
