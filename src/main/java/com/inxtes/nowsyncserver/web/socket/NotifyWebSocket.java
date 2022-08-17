@@ -16,7 +16,6 @@ import java.util.Date;
 @Component
 public class NotifyWebSocket {
 
-
     @OnOpen
     public void onOpen(Session session, @PathParam("uuid") String uuid) {
         try {
@@ -29,7 +28,16 @@ public class NotifyWebSocket {
             }
             e.printStackTrace();
         }
-        SessionPool.notifyUpdateByUUID(uuid);
+
+
+        Date deviceUpdateTime = SessionPool.getLastUpdateTime(uuid);
+        Date lastUpdateTime = DatabaseHandler.getLastUpdateTime();
+
+        //比较同步时间
+        if (deviceUpdateTime.before(lastUpdateTime)) {
+            SessionPool.notifyUpdateByUUID(uuid);
+        }
+
 
     }
 

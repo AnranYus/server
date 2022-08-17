@@ -61,6 +61,10 @@ public class SessionPool {
         }
     }
 
+    public static Date getLastUpdateTime(String uuid) {
+        return deviceService.getUpdateTime(uuid);
+    }
+
     public static void setLastUpdateTime(String uuid, Date date) {
         deviceService.setUpdateTime(date, uuid);
     }

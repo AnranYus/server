@@ -13,9 +13,11 @@ public interface DeviceMapper {
 
     Integer insertDevice(Device device);
 
-    Integer upDateLastUpdateTime(@Param("date") Date date, @Param("uuid") String uuid);
+    Integer updateLastUpdateTime(@Param("date") Date date, @Param("uuid") String uuid);
 
-    Integer upDateOnlineStatus(@Param("isOnline") Boolean isOnline, @Param("uuid") String uuid);
+    Integer updateOnlineStatus(@Param("isOnline") Boolean isOnline, @Param("uuid") String uuid);
 
     Boolean selectOnlineStatus(String uuid);
+
+    Date selectLastUpdateTime(String uuid);
 }

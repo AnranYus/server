@@ -14,4 +14,6 @@ public interface DeviceService {
     Integer setUpdateTime(Date date, String uuid);
 
     Integer switchOnlineStatus(Boolean isOnline, String uuid);
+
+    Date getUpdateTime(String uuid);
 }

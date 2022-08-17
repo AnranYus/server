@@ -18,14 +18,19 @@
         where uuid = #{uuid}
     </select>
 
-    <update id="upDateLastUpdateTime">
+    <update id="updateLastUpdateTime">
         update t_device
         set lastUpdate = #{date}
         where uuid = #{uuid}
     </update>
-    <update id="upDateOnlineStatus">
+    <update id="updateOnlineStatus">
         update t_device
         set isOnline = #{isOnline}
         where uuid = #{uuid}
     </update>
+    <select id="selectLastUpdateTime" parameterType="String" resultType="Date">
+        select lastUpdate
+        from t_device
+        where uuid = #{uuid}
+    </select>
 </mapper>

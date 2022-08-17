@@ -28,11 +28,16 @@ public class DeviceServiceImpl implements DeviceService {
 
     @Override
     public Integer setUpdateTime(Date date, String uuid) {
-        return deviceMapper.upDateLastUpdateTime(date, uuid);
+        return deviceMapper.updateLastUpdateTime(date, uuid);
     }
 
     @Override
     public Integer switchOnlineStatus(Boolean isOnline, String uuid) {
-        return deviceMapper.upDateOnlineStatus(isOnline, uuid);
+        return deviceMapper.updateOnlineStatus(isOnline, uuid);
+    }
+
+    @Override
+    public Date getUpdateTime(String uuid) {
+        return deviceMapper.selectLastUpdateTime(uuid);
     }
 }
