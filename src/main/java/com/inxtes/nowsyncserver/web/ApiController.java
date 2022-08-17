@@ -26,15 +26,13 @@ public class ApiController {
 
     private final ContactsService contactsService;
     private final MessageService messageService;
-    private final DataProcess dataProcess;
     private final Gson gson = new Gson();
     Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    public ApiController(ContactsService contactsService, MessageService messageService, DataProcess dataProcess) {
+    public ApiController(ContactsService contactsService, MessageService messageService) {
         this.contactsService = contactsService;
         this.messageService = messageService;
-        this.dataProcess = dataProcess;
     }
 
     /**
@@ -72,7 +70,6 @@ public class ApiController {
         }
 
         // 存在未储存的内容
-        logger.info("Uninsert list size: " + unInsert.size());
         if (unInsert.size() != 0) {
             formatReturnMsg(202, new Gson().toJson(unInsert), "contacts", response);
             return;
